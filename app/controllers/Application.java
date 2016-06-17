@@ -1,16 +1,20 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
+import play.mvc.Controller;
+import play.mvc.With;
 
-import java.util.*;
-
-import models.*;
-
+@With(Secure.class)
+@Check("administrator")
 public class Application extends Controller {
 
+	@Check("administrator")
     public static void index() {
         render();
+    }
+    
+//    @check
+    public static void aa(){
+    	
     }
 
 }
