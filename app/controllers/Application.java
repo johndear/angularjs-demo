@@ -9,7 +9,7 @@ public class Application extends Controller {
 
 	//@Check("administrator")
     public static void index() {
-        render("public/views/admin/index.html");
+        render("public/pages/admin/index.html");
     }
     
 //    @check
