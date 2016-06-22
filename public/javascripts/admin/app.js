@@ -13,6 +13,9 @@ adminApp.config(['$routeProvider', function($routeProvider) {
         }).when('/role', {
             templateUrl: 'views/admin/permission/role-list.html',
             controller: 'roleCtrl'
+        }).when('/role2', {
+            templateUrl: 'TestController/test',
+            controller: 'roleCtrl'
         })
 
 }]);

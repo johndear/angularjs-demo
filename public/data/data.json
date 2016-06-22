@@ -2,17 +2,20 @@
   {
     "id": 0,
     "name": "Item 0",
-    "price": "$0"
+    "price": "$0",
+    "opt":"<a onclick=showResource()>分配资源</a>"
   },
   {
     "id": 1,
     "name": "Item 1",
-    "price": "$1"
+    "price": "$1",
+    "opt":"<a>分配资源</a>"
   },
   {
     "id": 2,
     "name": "Item 2",
-    "price": "$2"
+    "price": "$2",
+    "opt":"<a>分配资源</a>"
   },
   {
     "id": 3,
