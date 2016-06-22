@@ -1,24 +1,24 @@
 
 
-var adminApp = angular.module('adminApp', ['ngRoute']);
+var adminApp = angular.module('adminApp', ['ngRoute', 'bsTable']);
 
 adminApp.config(['$routeProvider', function($routeProvider) {
 	
         $routeProvider.when('/', {
             templateUrl: 'views/admin/permission/welcome.html',
-            controller: 'ListCtrl'
+            controller: 'listCtrl'
         }).when('/resource', {
             templateUrl: 'views/admin/permission/resource-list.html',
-            controller: 'ListCtrl'
+            controller: 'roleCtrl'
         }).when('/role', {
             templateUrl: 'views/admin/permission/role-list.html',
-            controller: 'ListCtrl'
+            controller: 'roleCtrl'
         })
 
 }]);
 
-adminApp.controller('ListCtrl', ['$scope', function($scope){
+adminApp.controller('listCtrl', ['$scope', function($scope){
 	
-	alert(1);
+	console.log('welcom...');
 	
 }]);
