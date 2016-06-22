@@ -4,7 +4,7 @@ adminApp.controller('roleCtrl', ['$scope', function($scope){
 
 	$scope.bsTableControl = {
             options: {
-            	url:'public/javascripts/admin/permission/data.json',
+            	url:'public/data/data.json',
 				rowStyle: function (row, index) {
 			        return { classes: 'none' };
 			    },
