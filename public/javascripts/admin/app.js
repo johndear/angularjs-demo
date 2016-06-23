@@ -5,7 +5,7 @@ var adminApp = angular.module('adminApp', ['ngRoute', 'bsTable']);
 adminApp.config(['$routeProvider', function($routeProvider) {
 	
         $routeProvider.when('/', {
-            templateUrl: 'views/admin/permission/welcome.html',
+            templateUrl: 'Application/welcome',
             controller: 'listCtrl'
         }).when('/resource', {
             templateUrl: 'views/admin/permission/resource-list.html',
