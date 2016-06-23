@@ -1,17 +1,35 @@
-//package entity;
+package entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import play.db.jpa.Model;
 //
-//import javax.persistence.Entity;
-//import javax.persistence.Table;
+@Entity
+@Table(name = "tb_action")
+public class Action  extends Model {
 //
-//import play.db.jpa.Model;
-//
-//@Entity
-//@Table(name = "tb_action")
-//public class Action  extends Model {
-//
-//	private String actionName;
-//	private String ename;
+	private String name;
+	private String actions;
 //	private String icon;
+
+	public String getActions() {
+		return actions;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setActions(String actions) {
+		this.actions = actions;
+	}
+	
+	
 //	
 //	public String getActionName() {
 //		return actionName;
@@ -33,4 +51,4 @@
 //	}
 //	
 //	
-//}
+}
