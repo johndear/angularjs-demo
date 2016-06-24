@@ -11,7 +11,12 @@ import play.mvc.Controller;
 public class ResourceController extends Controller{
 	
 	public static void index(){
-		renderTemplate("Secure/role.html");
+		renderTemplate("Secure/resource.html");
+	}
+	
+	public static void queryAll(){
+		List<Resource> list = Resource.findAll();
+		renderJSON(list);
 	}
 	
 	public static void query(int roleId){
@@ -20,7 +25,6 @@ public class ResourceController extends Controller{
 		// 加载用户权限
 		List<Resource> list = JPA.em().createNativeQuery(sql, Resource.class)
 						.setParameter("roleId", roleId).getResultList();
-		
 		renderJSON(list);
 	}
 

@@ -41,7 +41,34 @@ adminApp.controller('roleCtrl', ['$scope', '$http', function($scope,$http){
             }
 	}
 	
-	$scope.bsTableControl2 = {};
+	$scope.bsTableControl2 = {
+            options: {
+            	data: [],
+				rowStyle: function (row, index) {
+			        return { classes: 'none' };
+			    },
+			    cache: false,
+			    height: 400,
+			    striped: true,
+			    pagination: false,
+			    pageSize: 5,
+			    pageList: [5, 10, 25, 50, 100, 200],
+			    search: true,
+			    showColumns: true,
+			    showRefresh: false,
+			    minimumCountColumns: 2,
+			    clickToSelect: false,
+			    showToggle: true,
+			    maintainSelected: true,
+			    columns: [{
+			        field: 'name',
+			        title: '资源名称'
+			    },{
+			        field: 'actions',
+			        title: '资源名称'
+			    }]
+            }
+	}
 	
 	function getResourceAction(roleId){
 		$scope.bsTableControl2 = {
