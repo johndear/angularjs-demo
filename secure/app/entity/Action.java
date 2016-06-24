@@ -10,12 +10,9 @@ import play.db.jpa.Model;
 public class Action  extends Model {
 //
 	private String name;
-	private String actions;
+	
+	private String resourceAction;
 //	private String icon;
-
-	public String getActions() {
-		return actions;
-	}
 
 	public String getName() {
 		return name;
@@ -25,9 +22,14 @@ public class Action  extends Model {
 		this.name = name;
 	}
 
-	public void setActions(String actions) {
-		this.actions = actions;
+	public String getResourceAction() {
+		return resourceAction;
 	}
+
+	public void setResourceAction(String resourceAction) {
+		this.resourceAction = resourceAction;
+	}
+
 	
 	
 //	
