@@ -1,37 +1,78 @@
-//package entity;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//import javax.persistence.Entity;
-//import javax.persistence.JoinColumn;
-//import javax.persistence.JoinTable;
-//import javax.persistence.ManyToMany;
-//import javax.persistence.OrderBy;
-//import javax.persistence.Table;
-//import javax.persistence.Transient;
-//
-//import org.hibernate.annotations.Cache;
-//import org.hibernate.annotations.CacheConcurrencyStrategy;
-//import org.hibernate.annotations.Fetch;
-//import org.hibernate.annotations.FetchMode;
-//
-//import play.db.jpa.Model;
-//
-//@Entity
-//@Table(name = "tb_menu", schema = "ydscm_permission")
-//public class Menu  extends Model {
-//	private String menuName;
-//	private String menuNameEn;
-//	private String menuUrl;
-//	private String menuCode;	
-//	private Long pId;	
-//	private Long menuLevel;			
-//	private Long displayOrder;	
-//	private String memo;
-//	private String target;		
-//	private Long appId;
-//	
+package entity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OrderBy;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import play.db.jpa.Model;
+
+@Entity
+@Table(name = "tb_resource")
+public class Resource  extends Model {
+	private String name;
+	
+	private String code;
+	
+	private String url;
+	
+	private String actions;
+	
+	private String authActions;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getActions() {
+		return actions;
+	}
+
+	public void setActions(String actions) {
+		this.actions = actions;
+	}
+
+	public String getAuthActions() {
+		return authActions;
+	}
+
+	public void setAuthActions(String authActions) {
+		this.authActions = authActions;
+	}
+	
+	
+	
 //	@Transient
 //	private List<Menu> childrens = new ArrayList<Menu>();
 //	
@@ -124,8 +165,8 @@
 //		this.actionList = actionList;
 //	}
 //	
-//	
-//	
-//
-//
-//}
+	
+	
+
+
+}

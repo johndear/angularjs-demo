@@ -11,10 +11,10 @@ adminApp.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'views/admin/permission/resource-list.html',
             controller: 'roleCtrl'
         }).when('/role', {
-            templateUrl: 'views/admin/permission/role-list.html',
+            templateUrl: 'RoleController/index',
             controller: 'roleCtrl'
-        }).when('/role2', {
-            templateUrl: 'TestController/test',
+        }).when('/group', {
+            templateUrl: 'views/admin/permission/role-list.html',
             controller: 'roleCtrl'
         })
 

@@ -12,9 +12,18 @@
 <!-- Main content -->
 <section class="content">
 
-	#{secure.check "get"}
-	    <a href="">Delete</a>
+	#{secure.check "user:ADD"}
+	    <a href="">user add</a>
 	#{/secure.check}
+	
+	#{secure.check "role:edit"}
+	    <a href="">role edit</a>
+	#{/secure.check}
+	
+	#{secure.check "user:add"}
+	    <a href="">user add</a>
+	#{/secure.check}
+	
 
 	<!-- Small boxes (Stat box) -->
 	<div class="row">

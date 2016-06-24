@@ -35,7 +35,9 @@ CREATE TABLE tb_group_role
 CREATE TABLE tb_resource
 (
 	id bigint COMMENT 'id',
+	app_id bigint, --- add
 	name varchar(50) COMMENT '资源名称',
+	code varchar(50) COMMENT '资源编码', --- add
 	url varchar(100) COMMENT '资源url',
 	actions varchar(500) COMMENT '资源初始化操作（用；隔开）',
 	parent_id bigint COMMENT 'parent_id',
