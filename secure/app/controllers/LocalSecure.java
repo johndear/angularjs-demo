@@ -21,11 +21,16 @@ public class LocalSecure extends Security {
 		StringBuffer sbf = new StringBuffer();
 		for (Action action : list) {
 			String[] actions = action.getActions().split(";");
+			
 			for (String act : actions) {
-				sbf.append(action.getName());
-				sbf.append(':');
-				sbf.append(act);
-				sbf.append(',');
+				StringBuffer subString = new StringBuffer();
+				subString.append(action.getName());
+				subString.append(':');
+				subString.append(act);
+				subString.append(',');
+				if(sbf.toString().indexOf(subString.toString())==-1){
+					sbf.append(subString);
+				}
 			}
 		}
 		// 用户的权限
