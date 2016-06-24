@@ -8,6 +8,7 @@ adminApp.controller('groupCtrl', ['$scope', '$http', function($scope,$http){
 				rowStyle: function (row, index) {
 			        return { classes: 'none' };
 			    },
+			    // toolbar: '#toolbar'
 			    cache: false,
 			    height: 400,
 			    striped: true,

@@ -12,7 +12,79 @@
 <!-- Main content -->
 <section class="content">
 
-	<table bs-table-control="bsTableControl"></table>
+			<div class="col-lg-12">
+				<div id="toolbar">
+					
+					<div class="form-inline" role="form">
+						<div class="form-group">
+							<div class="form-group">
+								<label class="control-label"><i class="fa fa-calendar"></i>
+									关键词</label>
+		
+								<div class="form-group">
+									<input type="text" size="10" class="form-control"
+										ng-model="keywordText" data-autoclose="1" placeholder="关键词"
+										bs-datepicker>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="form-group">
+								<label class="control-label"><i class="fa fa-calendar"></i>
+									分类</label>
+		
+								<div class="form-group">
+									<select class="form-control" id="isReplace" name="isReplace"
+										ng-model="category" required>
+										<option value="">全部</option>
+										<option ng-repeat="obj in dataDict['category']"
+											value="{{obj.code}}">{{obj.name}}</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-default pull-left" ng-click="query(true)">查询
+							</button>
+						</div>
+						<button type="button" class="btn btn-default"
+							ng-click="addKeyword($event)" title="新增">
+							<i class="glyphicon glyphicon-plus"></i>
+						</button>
+						<!-- 这里删除按钮的name必须要设置，并且等于路由里面配置的action名 -->
+						<button type="button" class="btn btn-default" id="del-selections"
+							url="./admin/keyword/delete" title="删除">
+							<i class="glyphicon glyphicon-trash"></i>
+						</button>
+						<!-- 这里重置密码按钮 -->
+						<button type="button" class="btn btn-default"
+							ng-click="refreshKeywordCache()" title="更新缓存">
+							<i class="glyphicon glyphicon-repeat" ></i>
+						</button>
+						<button type="file" ngf-select="uploadFiles($file, $invalidFiles)"
+							accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel"
+							ngf-max-height="1000" ngf-max-size="1MB" class="btn btn-default" title="导入excel">
+							<i class="glyphicon glyphicon-open"></i>
+						</button>
+						<button type="button" class="btn btn-default" ng-click="downloadTmp()" title="下载模板">
+							<i class="glyphicon glyphicon-download-alt"></i>
+						</button>
+						
+						<div class="col-md-6" ng-show="progress">
+							<section>
+								<progressbar max="max" value="dynamic"> 
+									<span style="color: pink; white-sapce: nowrap">{{dynamic}}%</span> 
+								</progressbar>
+							</section>
+						</div>
+						
+					</div>
+				</div>
+				
+				<table bs-table-control="bsTableControl" data-toolbar="#toolbar"></table>
+				
+		</div>
+				
 	
 	<button>保存</button>
 </section>
