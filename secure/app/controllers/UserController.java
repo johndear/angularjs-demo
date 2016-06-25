@@ -2,22 +2,21 @@ package controllers;
 
 import java.util.List;
 
-import entity.Group;
-import entity.Role;
 import play.mvc.Controller;
 import play.mvc.With;
+import entity.User;
 
 @With(Secure.class)
-public class GroupController extends Controller{
-	
-	@Check("group")
+public class UserController extends Controller {
+
+	@Check("user")
 	public static void index(){
-		renderTemplate("Secure/group.html");
+		renderTemplate("Secure/user.html");
 	}
 	
 	public static void queryAll(){
-		List<Group> list = Group.findAll();
+		List<User> list = User.findAll();
 		renderJSON(list);
 	}
-
+	
 }

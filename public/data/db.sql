@@ -35,9 +35,7 @@ CREATE TABLE tb_group_role
 CREATE TABLE tb_resource
 (
 	id bigint COMMENT 'id',
-	app_id bigint, --- add
 	name varchar(50) COMMENT '资源名称',
-	code varchar(50) COMMENT '资源编码', --- add
 	url varchar(100) COMMENT '资源url',
 	actions varchar(500) COMMENT '资源初始化操作（用；隔开）',
 	parent_id bigint COMMENT 'parent_id',
@@ -54,7 +52,8 @@ CREATE TABLE tb_role
 (
 	id bigint COMMENT 'id',
 	role_name varchar(50) COMMENT '角色名称',
-	memo varchar(100) COMMENT '备注'
+	memo varchar(100) COMMENT '备注',
+	is_super int(1) DEFAULT 0 COMMENT '是否超级管理员'
 ) COMMENT = 'tb_role';
 
 
@@ -75,10 +74,10 @@ CREATE TABLE tb_user
 	login_name varchar(20) COMMENT '登陆名',
 	user_name varchar(50) COMMENT '用户名',
 	password varchar(20) COMMENT '密码',
-	age bigint COMMENT '年龄',
 	sex varchar(2) COMMENT '性别',
 	birthday date COMMENT '生日',
-	salt varchar(50) COMMENT 'salt'
+	salt varchar(50) COMMENT 'salt',
+	email varchar(20) COMMENT '邮箱地址'
 ) COMMENT = 'tb_user';
 
 

@@ -1,5 +1,6 @@
 package entity;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -28,9 +29,13 @@ import play.db.jpa.Model;
 //默认的缓存策略.
 //@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class User extends Model {
+	@Column(name="user_name")
 	private String userName;
+	@Column(name="login_name")
 	private String loginName;
 	private String password;
+	private String sex;
+	private Date birthday;
 	private String salt;
 	private String email;
 	

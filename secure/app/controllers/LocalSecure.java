@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.persistence.EntityManager;
 
+import org.apache.commons.lang.StringUtils;
+
 import play.db.jpa.JPA;
 import controllers.Secure.Security;
 import entity.Action;
@@ -62,6 +64,9 @@ public class LocalSecure extends Security {
 				permissions.append(permission);
 			}
 			// 资源操作权限(如:,user:add,user:edit,)
+			if(StringUtils.isEmpty(resource.getAuthActions())){
+				continue;
+			}
 			String[] actions = resource.getAuthActions().split(";");
 			for (String action : actions) {
 				permission = resource.getCode() + ':' + action + ',';
@@ -82,7 +87,10 @@ public class LocalSecure extends Security {
 
 		return true;
 	}
-
 	
+	static void onCheckFailed(String profile) {
+        renderTemplate("Secure/accessDenied.html");
+    }
 
 }
+

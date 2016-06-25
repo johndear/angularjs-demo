@@ -7,9 +7,12 @@ import entity.Resource;
 import entity.Role;
 import play.db.jpa.JPA;
 import play.mvc.Controller;
+import play.mvc.With;
 
+@With(Secure.class)
 public class ResourceController extends Controller{
 	
+	@Check("resource")
 	public static void index(){
 		renderTemplate("Secure/resource.html");
 	}
