@@ -280,8 +280,10 @@
 						class="fa fa-angle-left pull-right"></i>
 				</a>
 					<ul class="treeview-menu">
-						<li class="active"><a href="#/resource"><i
+						#{secure.check "resource"}
+							<li class="active"><a href="#/resource"><i
 								class="fa fa-circle-o"></i> 资源管理</a></li>
+						#{/secure.check}
 						<li class="active"><a href="#/role"><i
 								class="fa fa-circle-o"></i> 角色管理</a></li>
 						<li><a href="#/group"><i class="fa fa-circle-o"></i>
