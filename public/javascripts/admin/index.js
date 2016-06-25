@@ -20,13 +20,12 @@ adminApp.config(function($httpProvider){
 	$httpProvider.interceptors.push('errorInterceptor');
 });
 
+// TODO 怎么把跟secure有关的js，抽成独立的js。并且把main.html中依赖的js
 adminApp.config(['$routeProvider', function($routeProvider) {
 	
         $routeProvider.when('/', {
             templateUrl: 'Application/welcome',
             controller: 'listCtrl'
-        }).when('/accessDenied', {
-            templateUrl: 'LocalSecure/accessDenied'
         }).when('/resource', {
             templateUrl: 'ResourceController/index',
             controller: 'resourceCtrl'
