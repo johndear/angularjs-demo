@@ -11,7 +11,7 @@ public class UserController extends Controller {
 
 	@Check("user")
 	public static void index(){
-		renderTemplate("Secure/user.html");
+		renderTemplate("Secure/modules/user.html");
 	}
 	
 	public static void queryAll(){

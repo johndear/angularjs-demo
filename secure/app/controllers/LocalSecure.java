@@ -89,7 +89,7 @@ public class LocalSecure extends Security {
 	}
 	
 	static void onCheckFailed(String profile) {
-        renderTemplate("Secure/accessDenied.html");
+        renderTemplate("Secure/errors/accessDenied.html");
     }
 
 }

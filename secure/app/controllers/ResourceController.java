@@ -14,7 +14,7 @@ public class ResourceController extends Controller{
 	
 	@Check("resource")
 	public static void index(){
-		renderTemplate("Secure/resource.html");
+		renderTemplate("Secure/modules/resource.html");
 	}
 	
 	public static void queryAll(){

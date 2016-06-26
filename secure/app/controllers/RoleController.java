@@ -11,7 +11,7 @@ public class RoleController extends Controller{
 	
 	@Check("role")
 	public static void index(){
-		renderTemplate("Secure/role.html");
+		renderTemplate("Secure/modules/role.html");
 	}
 	
 	public static void query(){

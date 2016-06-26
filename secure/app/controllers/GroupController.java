@@ -12,7 +12,7 @@ public class GroupController extends Controller{
 	
 	@Check("group")
 	public static void index(){
-		renderTemplate("Secure/group.html");
+		renderTemplate("Secure/modules/group.html");
 	}
 	
 	public static void queryAll(){
