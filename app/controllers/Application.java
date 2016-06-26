@@ -7,11 +7,11 @@ import play.mvc.With;
 public class Application extends Controller {
 
     public static void index() {
-        render("public/pages/admin/index.html");
+        render();
     }
     
     public static void welcome(){
-    	render("public/pages/admin/permission/welcome.html");
+    	render("public/pages/welcome.html");
     }
 
 }

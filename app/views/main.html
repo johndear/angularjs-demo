@@ -2,15 +2,71 @@
 
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>#{get 'title' /}</title>
-        <meta charset="${_response_encoding}">
+        <!-- Tell the browser to be responsive to screen width -->
+  		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Bootstrap 3.3.6 -->
+    	<link rel="stylesheet" href="@{'public/plugins/bootstrap/css/bootstrap.min.css'}">
+    	<!-- Font Awesome -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+		<!-- Ionicons -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+		<!-- Theme style -->
+        <link rel="stylesheet" href="@{'public/plugins/AdminLTE/css/AdminLTE.min.css'}">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+		       folder instead of downloading all of them to reduce the load. -->
+    	<link rel="stylesheet" href="@{'public/plugins/AdminLTE/css/skins/_all-skins.min.css'}">
+
+		<!-- default start -->
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
         <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         #{get 'moreScripts' /}
+        <!-- default end -->
     </head>
-    <body>
-        #{doLayout /}
+    
+    <body class="hold-transition skin-blue sidebar-mini">
+       #{doLayout /}
     </body>
+    
+    <!-- jquery -->    	
+	<script src="@{'public/angularjs/bower_components/jquery/dist/jquery.js'}"></script>
+	<!-- jQuery UI 1.11.4 -->
+	<script src="@{'public/angularjs/bower_components/jquery-ui-1.11.4/jquery-ui.min.js'}"></script>
+	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+	<script>
+	  $.widget.bridge('uibutton', $.ui.button);
+	</script>
+   	<!-- Bootstrap 3.3.6 -->
+	<script src="@{'public/angularjs/bower_components/bootstrap/dist/js/bootstrap.min.js'}"></script>
+		
+    <!-- AdminLTE App -->
+	<script src="@{'public/plugins/AdminLTE/js/app.min.js'}"></script>
+	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+	<!-- <script src="@{'public/plugins/AdminLTE/js/pages/dashboard.js'}"></script> -->
+	<!-- AdminLTE for demo purposes -->
+	<script src="@{'public/plugins/AdminLTE/js/demo.js'}"></script>
+	
+	<!-- angularjs -->
+	<script type="text/javascript" src="@{'public/angularjs/bower_components/angular/angular.js'}"></script>
+	<script type="text/javascript" src="@{'public/angularjs/bower_components/angular-route/angular-route.js'}"></script>
+	<script type="text/javascript" src="@{'public/angularjs/bower_components/angular-resource/angular-resource.js'}"></script>
+	<script type="text/javascript" src="@{'public/javascripts/admin/index.js'}"></script>
+	
+	<!-- bootstrap-table -->
+	<link rel="stylesheet" href="@{'public/angularjs/bower_components/bootstrap-table/dist/bootstrap-table.min.css'}">
+	<script type="text/javascript" src="@{'public/angularjs/bower_components/bootstrap-table/docs/dist/bootstrap-table.js'}"></script>
+	<script type="text/javascript" src="@{'public/angularjs/bower_components/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js'}"></script>
+    <script type="text/javascript" src="@{'public/angularjs/bower_components/bootstrap-table/docs/dist/extensions/angular/bootstrap-table-angular.js'}"></script>
+
+    
+	<!-- custome js -->
+	<script type="text/javascript" src="@{'public/resource.js'}"></script>
+	<script type="text/javascript" src="@{'public/role.js'}"></script>
+	<script type="text/javascript" src="@{'public/group.js'}"></script>
+	<script type="text/javascript" src="@{'public/user.js'}"></script>
+	
 </html>
