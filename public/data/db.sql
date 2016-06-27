@@ -46,6 +46,13 @@ CREATE TABLE tb_resource
 	update_by varchar(10) COMMENT 'update_by'
 ) COMMENT = 'tb_resource';
 
+CREATE TABLE tb_resouce_action
+(
+	id BIGINT COMMENT 'id',
+	resource_id BIGINT COMMENT '资源id',
+	action_code VARCHAR(20) COMMENT '操作编码',
+	action_name VARCHAR(50) COMMENT '操作名称'
+) COMMENT = 'tb_resouce_action' DEFAULT CHARACTER SET utf8;
 
 -- tb_role
 CREATE TABLE tb_role

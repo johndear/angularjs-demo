@@ -21,3 +21,30 @@ https://www.playframework.com/documentation/1.2.x/home#modules
 
 https://www.playframework.com/documentation/1.2/secure
 
+
+-- mysql 行转列
+参考：http://www.2cto.com/database/201507/413467.html
+add:添加,edit:编辑,delete:删除
+SELECT
+    b.id,
+    NAME,
+    REPLACE(
+        SUBSTRING_INDEX(actions, ',', a.id),
+        CONCAT(
+            SUBSTRING_INDEX(actions, ',', a.id - 1),
+            ','
+        ),
+        ''
+    )AS actions
+FROM
+    tb_squence a
+CROSS JOIN(
+    SELECT
+        id,
+        NAME,
+        CONCAT(actions, ',')AS actions,
+        LENGTH(actions)- LENGTH(REPLACE(actions, ',', ''))+ 1 AS size
+    FROM
+        `tb_resource`
+)b ON a.id <= b.size;
+

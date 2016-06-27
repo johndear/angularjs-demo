@@ -95,7 +95,10 @@ adminApp.controller('roleCtrl', ['$scope', '$http', function($scope,$http){
 				        title: '资源名称'
 				    },{
 				        field: 'actions',
-				        title: '资源名称'
+				        title: '操作名称'
+				    },{
+				        field: 'authActions',
+				        title: '已授权操作'
 				    }]
 	            }
 		}
