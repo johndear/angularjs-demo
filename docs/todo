@@ -48,5 +48,7 @@ CROSS JOIN(
         `tb_resource`
 )b ON a.id <= b.size;
 
-http://www.tuicool.com/articles/IBJNRn 模态框
+http://www.tuicool.com/articles/IBJNRn ----模态框
+
+http://stackoverflow.com/questions/4672863/how-do-i-show-sql-with-play-framework  ------jpa打印sql，one2one
 
