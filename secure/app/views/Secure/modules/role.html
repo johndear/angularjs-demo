@@ -12,20 +12,22 @@
 <!-- Main content -->
 <section class="content">
 
-	<div style="width:50%;float:left;"><table bs-table-control="bsTableControl"></table></div>
+	<div style="width:40%;float:left;"><table bs-table-control="bsTableControl"></table></div>
 	
-	<div style="width:50%;float:right;"><table bs-table-control="bsTableControl2"></table></div>
+	<div style="width:20%;float:left;"><ul tree class="ztree" ng-model="selectNode" node-data="abc1"></ul></div>
+	<div style="width:40%;float:right;"><table bs-table-control="bsTableControl2"></table></div>
 
-	<div style="width:100%;position:absolute;z-index:2;vertical-align: middle;"><center><div style="width:50%;display:none;" id="treeview-checkable"></div></center></div>
+<!-- 	<div style="width:100%;position:absolute;z-index:2;vertical-align: middle;"><center><div style="width:50%;display:none;" id="treeview-checkable"></div></center></div> -->
 
-	<button>保存</button>
+	<button ng-click="test()">保存</button>
 </section>
 <!-- /.content -->
 
 	<script src="public/bootstrap-treeview.js"></script>
 <script type="text/javascript">
 
-function showResource(){
+function showResource(node){
+	console.log(node);
 	$('#treeview-checkable').show();
 }
 
@@ -78,5 +80,7 @@ var $checkableTree = $('#treeview-checkable').treeview({
       $('#checkable-output').prepend('<p>' + node.text + ' was unchecked</p>');
     }
   });
+  
+
 </script>
 
