@@ -1,14 +1,7 @@
-http://each.sinaapp.com/angular/
-http://angularjs.cn/tag/AngularJS 中文社区
-
+http://each.sinaapp.com/angular/  -- 在线教程
 2、angular 价值万元免费书籍(books)
-
 17、AngularJS应用教程：表单验证（整合篇）(form) 
 及之后的
-
-bootstrap官网
-http://getbootstrap.com/css/#tables
-http://www.bootcss.com/
 
 视频学习：
 http://www.hubwiz.com/course/  汇智网，网站的课程主要有：angularJS，nodejs，mongodb，ionic,jquery,html5,css3及实战的一些相关课程。
@@ -17,10 +10,7 @@ angularJS进阶：http://www.hubwiz.com/course/54f3ba65e564e50cfccbad4b/
 
 服务端技术：
 https://www.playframework.com/documentation/1.2.x/home#modules
-
-
 https://www.playframework.com/documentation/1.2/secure
-
 
 -- mysql 行转列
 参考：http://www.2cto.com/database/201507/413467.html
@@ -48,11 +38,12 @@ CROSS JOIN(
         `tb_resource`
 )b ON a.id <= b.size;
 
+http://angular-ui.github.io/bootstrap/ -- modal
 http://www.tuicool.com/articles/IBJNRn ----模态框
+https://github.com/likeastore/ngDialog#ngdialog -- dialog框
 
 http://stackoverflow.com/questions/4672863/how-do-i-show-sql-with-play-framework  ------jpa打印sql，one2one
 
 顶部工具栏浮动：
 Playroom http://www.bootcss.com/p/headroom.js/playroom/
 stickUp http://www.bootcss.com/p/stickup/
-

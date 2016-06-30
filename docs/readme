@@ -1,9 +1,12 @@
+后台管理模板
+	https://almsaeedstudio.com/preview -- AdminLTE-2.3.0（bootstrap风格） 
+	http://www.open-open.com/news/view/a364b -- 【16个良好的 Bootstrap Angularjs管理后台主题】
 前端ui
     Spectre.css      			http://picturepan2.github.io/spectre/      与 bootstrap差不多，属于前端样式框架
 	Bootstrap 2.3（支持  IE7.0+） 	http://www.runoob.com/bootstrap/bootstrap-pagination.html
 	Bootstrap 3（支持  IE8.0+）		http://www.bootcss.com/
+	Bootstrap 4					http://getbootstrap.com/css/#tables
 	bootstrap-table 			http://issues.wenzhixin.net.cn/bootstrap-table/
-	AdminLTE-2.3.0（bootstrap风格） https://almsaeedstudio.com/preview
 	AngularStrap 				http://mgcrea.github.io/angular-strap/#
 	AngularUI 					https://github.com/angular-ui?page=1
 	Foundation（支持  IE9.0+）
@@ -18,17 +21,29 @@
 	RequireJS
 	AngularJs
 		https://github.com/angular
-		http://www.miaoyueyue.com/archives/category/web/js/angularjs 自定义指定
+		http://www.miaoyueyue.com/archives/category/web/js/angularjs  -- 自定义指令
+		http://www.runoob.com/angularjs/angularjs-forms.html  -- angularjs-API
 	AngularJs showcase：
 		http://showcase.ngnice.com/  
-		http://each.sinaapp.com/angular/
+		http://each.sinaapp.com/angular/  -- 在线教程
+		http://angularjs.cn/tag/AngularJS -- 中文社区
 	手动MVVM框架
 		http://www.tuicool.com/articles/UFjeiaZ
 	静态资源引用    Google developers（Make the Web Faster）
 		https://developers.google.com/speed/libraries/
 	angularJs组件：
 		https://github.com/gianarb/awesome-angularjs 很棒的组件
-		http://angular-ui.github.io/bootstrap/ angularui-bootstrap组件
+		http://angular-ui.github.io/bootstrap/ angularui-bootstrap组件(包括如下：
+			carousel
+			datepicker
+			datepickerPopup
+			dropdown
+			modal
+			popover
+			position
+			timepicker
+			tooltip
+			typeahead)
 开发工具
 	webstorm 
 		javascript开发工具， angular自动提示  web-server。js运行
