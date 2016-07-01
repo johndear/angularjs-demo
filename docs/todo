@@ -39,8 +39,9 @@ CROSS JOIN(
 )b ON a.id <= b.size;
 
 http://angular-ui.github.io/bootstrap/ -- modal
-http://www.tuicool.com/articles/IBJNRn ----模态框
+http://www.tuicool.com/articles/IBJNRn ----创建可拖动的指令
 https://github.com/likeastore/ngDialog#ngdialog -- dialog框
+https://docs.angularjs.org/guide/directive ---angularjs高级应用 ，创建可拖动的指令、tab切换
 
 http://stackoverflow.com/questions/4672863/how-do-i-show-sql-with-play-framework  ------jpa打印sql，one2one
 
