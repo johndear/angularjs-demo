@@ -39,6 +39,7 @@ CROSS JOIN(
 )b ON a.id <= b.size;
 
 http://angular-ui.github.io/bootstrap/ -- modal
+http://www.runoob.com/bootstrap/bootstrap-modal-plugin.html -- 模态框
 http://www.tuicool.com/articles/IBJNRn ----创建可拖动的指令
 https://github.com/likeastore/ngDialog#ngdialog -- dialog框
 https://docs.angularjs.org/guide/directive ---angularjs高级应用 ，创建可拖动的指令、tab切换
