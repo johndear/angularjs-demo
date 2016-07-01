@@ -14,96 +14,23 @@
 
 	<div style="width:40%;float:left;"><table bs-table-control="bsTableControl"></table></div>
 	
-	<div style="width:20%;float:left;"><ul tree class="ztree" ng-model="selectNode" node-data="abc1"></ul></div>
-	<div style="width:40%;float:right;"><table bs-table-control="bsTableControl2"></table></div>
+	<div style="width:60%;float:right;"><table bs-table-control="bsTableControl2"></table></div>
 
-<!-- 	<div style="width:100%;position:absolute;z-index:2;vertical-align: middle;"><center><div style="width:50%;display:none;" id="treeview-checkable"></div></center></div> -->
-
-	<button ng-click="test()">保存</button>
-</section>
-<!-- /.content -->
-
-<script type="text/ng-template" id="myModalContent.html">
+	<script type="text/ng-template" id="myModalContent.html">
         <div class="modal-header">
-            <h3 class="modal-title">I'm a modal!</h3>
+            <h3 class="modal-title">所有资源</h3>
         </div>
         <div class="modal-body">
-            <ul>
-                <li ng-repeat="item in items">
-                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                </li>
-            </ul>
-            Selected: <b>{{ selected.item }}</b>
+			<ul tree class="ztree" ng-model="selectNode" node-data="resources"></ul>
         </div>
         <div class="modal-footer">
             <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
             <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
         </div>
-    </script>
-     <button type="button" class="btn btn-default" ng-click="open()">Open me!</button>
-    <button type="button" class="btn btn-default" ng-click="open('lg')">Large modal</button>
-    <button type="button" class="btn btn-default" ng-click="open('sm')">Small modal</button>
-    <button type="button" class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button>
-    <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+	</script>
+	<button type="button" class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button>
 
-	<script src="public/bootstrap-treeview.js"></script>
-<script type="text/javascript">
+</section>
+<!-- /.content -->
 
-function showResource(node){
-	console.log(node);
-	$('#treeview-checkable').show();
-}
-
-var defaultData = [
-                   {
-                     text: '在线客服管理系统',
-                     href: '#parent1',
-                     tags: ['4'],
-                     nodes: [
-                       {
-                         text: 'Child 1',
-                         href: '#child1',
-                         tags: ['2'],
-                         nodes: [
-                           {
-                             text: 'Grandchild 1',
-                             href: '#grandchild1',
-                             tags: ['0']
-                           },
-                           {
-                             text: 'Grandchild 2',
-                             href: '#grandchild2',
-                             tags: ['0']
-                           }
-                         ]
-                       },
-                       {
-                         text: 'Child 2',
-                         href: '#child2',
-                         tags: ['0']
-                       }
-                     ]
-                   },
-                   {
-                     text: 'Parent 2',
-                     href: '#parent2',
-                     tags: ['0']
-                   }
-                 ];
-
-
-var $checkableTree = $('#treeview-checkable').treeview({
-    data: defaultData,
-    showIcon: false,
-    showCheckbox: true,
-    onNodeChecked: function(event, node) {
-      $('#checkable-output').prepend('<p>' + node.text + ' was checked</p>');
-    },
-    onNodeUnchecked: function (event, node) {
-      $('#checkable-output').prepend('<p>' + node.text + ' was unchecked</p>');
-    }
-  });
-  
-
-</script>
 
