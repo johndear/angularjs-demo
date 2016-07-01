@@ -1,6 +1,6 @@
 var adminApp = angular.module('adminApp');
 
-adminApp.controller('roleCtrl', ['$scope', '$http', function($scope,$http){
+adminApp.controller('roleCtrl', function($scope,$http, $uibModal, $log){
 
 	$scope.abc1 = [ {
 		id : 1,
@@ -213,7 +213,53 @@ adminApp.controller('roleCtrl', ['$scope', '$http', function($scope,$http){
 		$scope.$apply($scope.bsTableControl2);
 	}
 	
-}]);
+  // 弹出框事件
+  $scope.items = ['item1', 'item2', 'item3'];
+  $scope.animationsEnabled = true;
+  $scope.open = function (size) {
+	  var modalInstance = $uibModal.open({
+	      animation: $scope.animationsEnabled,
+	      templateUrl: 'myModalContent.html',
+	      controller: 'ModalInstanceCtrl',
+	      size: size,
+	      resolve: {
+	        items: function () {
+	          return $scope.items;
+	        }
+	      }
+	  });
+
+	    modalInstance.result.then(function (selectedItem) {
+	       $scope.selected = selectedItem;
+	    }, function () {
+	       $log.info('Modal dismissed at: ' + new Date());
+	    });
+  };
+
+  $scope.toggleAnimation = function () {
+    $scope.animationsEnabled = !$scope.animationsEnabled;
+  };
+	
+});
+
+// 弹出框页面controller
+adminApp.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items) {
+
+	  $scope.items = items;
+	  $scope.selected = {
+	    item: $scope.items[0]
+	  };
+	
+	  $scope.ok = function () {
+		  console.log('ok...');
+		  $uibModalInstance.close($scope.selected.item);
+	  };
+	
+	  $scope.cancel = function () {
+		  console.log('cancel...');
+		  $uibModalInstance.dismiss('cancel');
+	  };
+});
 
 String.prototype.endWith=function(str){     
   var reg=new RegExp(str+"$");     
