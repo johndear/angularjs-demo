@@ -146,12 +146,11 @@ adminApp.controller('roleCtrl', function($scope,$http, $uibModal, $log, allResou
 	}
 	
   // 弹出框事件
-  $scope.animationsEnabled = true;
   $scope.open = function (size) {
 	  var modalInstance = $uibModal.open({
-	      animation: $scope.animationsEnabled,
 	      templateUrl: 'myModalContent.html',
 	      controller: 'ModalInstanceCtrl',
+	      animation: true,
 	      size: size,
 	      resolve: {
 	    	resourceList: function () {
