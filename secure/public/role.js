@@ -1,6 +1,7 @@
 var adminApp = angular.module('adminApp');
 
 adminApp.controller('roleCtrl', function($scope,$http, $uibModal, $log, allResources){
+	allResources = allResources.splice(0, allResources.length);
 
 	$scope.bsTableControl = {
             options: {

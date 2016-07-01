@@ -3,6 +3,7 @@ package entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -27,9 +28,19 @@ public class Resource  extends Model {
 	
 	private String url;
 	
+	private int pId;
+	
 	private String actions;
 	
 	private String authActions;
+
+	public int getpId() {
+		return pId;
+	}
+
+	public void setpId(int pId) {
+		this.pId = pId;
+	}
 
 	public String getName() {
 		return name;

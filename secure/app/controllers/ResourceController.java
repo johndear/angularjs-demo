@@ -23,7 +23,7 @@ public class ResourceController extends Controller{
 	}
 	
 	public static void query(int roleId){
-		String sql="SELECT t5.id,t5.name,t5.code,t5.url,t5.`actions` actions,t4.resource_action authActions FROM tb_role_resource_action t4 LEFT JOIN tb_resource t5 ON t4.resource_id = t5.id WHERE t4.`role_id` = :roleId";
+		String sql="SELECT t5.id,t5.name,t5.code,t5.url,t5.`actions` actions,t4.resource_action authActions,t5.pid pId FROM tb_role_resource_action t4 LEFT JOIN tb_resource t5 ON t4.resource_id = t5.id WHERE t4.`role_id` = :roleId";
 		
 		// 加载用户权限
 		List<Resource> list = JPA.em().createNativeQuery(sql, Resource.class)

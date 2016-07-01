@@ -16,7 +16,7 @@ import entity.User;
 public class LocalSecure extends Security {
 
 	static String login_sql = "SELECT * FROM tb_user WHERE login_name=:loginName AND PASSWORD=:password";
-	static String load_permission_sql = "SELECT t5.id,t5.name,t5.code,t5.url,t5.`actions` actions,t4.resource_action authActions FROM tb_user t1 LEFT JOIN tb_user_group t2 ON t1.id=t2.user_id LEFT JOIN tb_group_role t3 ON t2.group_id = t3.group_id LEFT JOIN tb_role_resource_action t4 ON t3.role_id=t4.role_id LEFT JOIN tb_resource t5 ON t4.resource_id=t5.id where t1.login_name=:loginName";
+	static String load_permission_sql = "SELECT t5.id,t5.name,t5.code,t5.url,t5.`actions` actions,t4.resource_action authActions,t5.pid pId FROM tb_user t1 LEFT JOIN tb_user_group t2 ON t1.id=t2.user_id LEFT JOIN tb_group_role t3 ON t2.group_id = t3.group_id LEFT JOIN tb_role_resource_action t4 ON t3.role_id=t4.role_id LEFT JOIN tb_resource t5 ON t4.resource_id=t5.id where t1.login_name=:loginName";
 
 	/**
 	 * 
