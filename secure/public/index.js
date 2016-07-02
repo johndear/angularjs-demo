@@ -20,6 +20,19 @@ adminApp.config(function($httpProvider){
 	$httpProvider.interceptors.push('errorInterceptor');
 });
 
+adminApp.config(function ($resourceProvider) {
+  $resourceProvider.defaults.actions.save = {
+		 transformRequest:function(data) {
+			 if (data === undefined) {
+		           return data;
+		     }
+	         return $.param(data);
+	     },
+		 method:'post',
+	     headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'} // ignored
+  };
+});
+
 //adminApp.factory("roleService", function($q){
 //	return $http.get('ResourceController/queryAll').then(function(data){
 //		console.log('data', data);

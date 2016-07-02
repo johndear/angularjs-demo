@@ -30,14 +30,14 @@ import play.db.jpa.Model;
 //@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class User extends Model {
 	@Column(name="user_name")
-	private String userName;
+	public String userName;
 	@Column(name="login_name")
-	private String loginName;
-	private String password;
-	private String sex;
-	private Date birthday;
-	private String salt;
-	private String email;
+	public String loginName;
+	public String password;
+	public String sex;
+	public Date birthday;
+	public String salt;
+	public String email;
 	
 //	private List<Role> roleList = Lists.newArrayList(); // 有序的关联对象集合
 
@@ -48,23 +48,7 @@ public class User extends Model {
 		this.id = id;
 	}
 
-	@NotBlank
-	@Column(name = "login_name")
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
+//	@NotBlank
 
 //	// 不持久化到数据库，也不显示在Restful接口的属性.
 //	@Transient
@@ -76,24 +60,6 @@ public class User extends Model {
 //	public void setPlainPassword(String plainPassword) {
 //		this.plainPassword = plainPassword;
 //	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getSalt() {
-		return salt;
-	}
-
-	public void setSalt(String salt) {
-		this.salt = salt;
-	}
-	
-	
 
 //	// 多对多定义 -- 属性(fetch=FetchType.EAGER)就不是lazy load
 //	@ManyToMany
@@ -128,14 +94,6 @@ public class User extends Model {
 	// public void setRegisterDate(Date registerDate) {
 	// this.registerDate = registerDate;
 	// }
-
-	public String getLoginName() {
-		return loginName;
-	}
-
-	public void setLoginName(String loginName) {
-		this.loginName = loginName;
-	}
 
 	@Override
 	public String toString() {

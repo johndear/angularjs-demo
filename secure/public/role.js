@@ -1,11 +1,11 @@
 var adminApp = angular.module('adminApp');
 
 adminApp.controller('roleCtrl', function($scope,$http, $uibModal, $log, allResources){
-	allResources = allResources.splice(0, allResources.length);
+	myResourceList = allResources.slice(0, allResources.length);
 
 	$scope.bsTableControl = {
             options: {
-            	url:'RoleController/query',
+            	url:'RoleController',
 				rowStyle: function (row, index) {
 			        return { classes: 'none' };
 			    },
@@ -40,7 +40,7 @@ adminApp.controller('roleCtrl', function($scope,$http, $uibModal, $log, allResou
 			    }],
 			    onClickCell: function(field, value, row, $element){
 			    	if(field=='opt'){
-			    		$scope.open();
+			    		$scope.open(row);
 			    	}
 			    },
 			    onClickRow: function(row, $element){
@@ -82,7 +82,7 @@ adminApp.controller('roleCtrl', function($scope,$http, $uibModal, $log, allResou
 	function getResourceAction(roleId){
 		$scope.bsTableControl2 = {
 	            options: {
-	            	url:'ResourceController/query?roleId='+roleId,
+	            	url:'ResourceController/queryByRoleId?roleId='+roleId,
 					rowStyle: function (row, index) {
 				        return { classes: 'none' };
 				    },
@@ -147,15 +147,16 @@ adminApp.controller('roleCtrl', function($scope,$http, $uibModal, $log, allResou
 	}
 	
   // 弹出框事件
-  $scope.open = function (size) {
+  $scope.open = function (selectedRow) {
 	  var modalInstance = $uibModal.open({
 	      templateUrl: 'myModalContent.html',
 	      controller: 'ModalInstanceCtrl',
 	      animation: true,
-	      size: size,
+	      size: '',// lg,sm
 	      resolve: {
+	    	roleId: selectedRow.id,
 	    	resourceList: function () {
-	    		return allResources;
+	    		return myResourceList;
 	        }
 	      }
 	  });
@@ -174,7 +175,7 @@ adminApp.controller('roleCtrl', function($scope,$http, $uibModal, $log, allResou
 });
 
 // 弹出框页面controller
-adminApp.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, resourceList) {
+adminApp.controller('ModalInstanceCtrl', function ($http, $scope, $uibModalInstance, roleId, resourceList, Recipe) {
 	
 	  $scope.resources = resourceList;
 	  $scope.selected = {
@@ -184,6 +185,22 @@ adminApp.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, re
 	  $scope.ok = function () {
 		  console.log('ok...');
 		  console.log($scope.selectNode);
+		  
+		  var user1 = {id:3, loginName:'lisi', name:'lss'};
+		  Recipe.save({id: roleId},{user: user1});
+		  
+//		  Recipe.get({id:'3'}, function(user){
+////			  console.log('user', user)
+////			  user.$save();
+//			  
+//			//这里等价于User.save({id:'123'},{name:'changeAnotherName'})
+//		  });
+		  
+		  
+//		  var user = {id:'2', loginName:'lisi', name:'lss'};
+//		  var recipe = new Recipe(user);
+//		  recipe.name='jsss';
+//		  recipe.$save();
 		  $uibModalInstance.close($scope.selected.item);
 	  };
 	

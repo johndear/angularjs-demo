@@ -8,3 +8,6 @@ GET         /logout         Secure.logout
 
 GET     	/secure         SecureApplication.index
 GET     	/secure/        staticDir:public/secure
+
+
+

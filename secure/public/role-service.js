@@ -4,7 +4,10 @@ var services = angular.module('guthub.services', ['ngResource']);
 
 services.factory('Recipe', ['$resource',
     function($resource) {
-  return $resource('ResourceController/queryAll', {roleId: '@roleId'});
+  return $resource('ResourceController/:id', {id: '@id'}, {
+	  // 可以声明额外的方法
+	  queryByRoleId: {method:'GET', params:{}, isArray:false}
+  });
 }]);
 
 services.factory('MultiRecipeLoader', ['Recipe', '$q',

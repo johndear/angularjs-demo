@@ -17,4 +17,10 @@ GET     /views/                                	staticDir:public/pages
 GET     /views/                                	staticDir:public/views
 
 # Catch all
-*       /{controller}/{action}                  {controller}.{action}
+*       /{controller}/index                  	{controller}.index
+GET     /{controller}				 			{controller}.query
+GET 	/{controller}/{<\d+>id}/?    			{controller}.show
+POST    /{controller}				 			{controller}.create
+POST 	/{controller}/{<\d+>id}/?	 			{controller}.save
+DELETE  /{controller}/{<\d+>id}/?    			{controller}.delete
+*       /{controller}/{action}       			{controller}.{action}
