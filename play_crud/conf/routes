@@ -1,0 +1,14 @@
+# This file defines all module routes (Higher priority routes first)
+#
+# import these routes in the main app as :
+# *     /                       module:play_crud
+#
+# ~~~~
+
+GET     /?                      Module.index
+
+GET     	/secure						Users.index
+GET			/user/{<\d+>id}/?			Users.show
+POST    	/user/?               		Users.persist
+PUT     	/user/{<\d+>id}/?      		Users.update
+DELETE  	/user/{<\d+>id}/?      		Users.delete
