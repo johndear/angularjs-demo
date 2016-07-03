@@ -12,9 +12,9 @@
 <!-- Main content -->
 <section class="content">
 
-	<div style="width:40%;float:left;"><table bs-table-control="bsTableControl"></table></div>
+	<div style="width:40%;float:left;"><table id="bt1" bs-table-control="bsTableControl"></table></div>
 	
-	<div style="width:60%;float:right;"><table bs-table-control="bsTableControl2"></table></div>
+	<div style="width:60%;float:right;"><table id="bt2" bs-table-control="bsTableControl2"></table></div>
 
 	<script type="text/ng-template" id="myModalContent.html">
         <div class="modal-header">
@@ -28,7 +28,7 @@
             <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
         </div>
 	</script>
-	<button type="button" class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button>
+	<button type="button" class="btn btn-default" ng-click="saveRoleResourceAction()">保存</button>
 
 </section>
 <!-- /.content -->

@@ -1,30 +1,32 @@
 var adminApp = angular.module('adminApp');
 
-adminApp.controller('roleCtrl', function($scope,$http, $uibModal, $log, allResources){
+adminApp.controller('roleCtrl', function($scope,$http, $uibModal, $log, Recipe, allResources){
 	myResourceList = allResources.slice(0, allResources.length);
 
 	$scope.bsTableControl = {
             options: {
             	url:'RoleController',
-				rowStyle: function (row, index) {
-			        return { classes: 'none' };
-			    },
 			    cache: false,
 			    height: 400,
-			    striped: true,
+//			    striped: true,
 			    pagination: false,
 			    pageSize: 5,
 			    pageList: [5, 10, 25, 50, 100, 200],
-			    search: true,
-			    showColumns: true,
+			    search: false,
+			    showColumns: false,
+			    showToggle: false,
 			    showRefresh: false,
 			    minimumCountColumns: 2,
-			    clickToSelect: false,
-			    showToggle: true,
+			    clickToSelect: true,
 			    maintainSelected: true,
+			    singleSelect: true,
+			    selectItemName:'id',
 			    columns: [{
+			    	checkbox: true
+			    },{
 			        field: 'id',
-			        title: 'ID'
+			        title: 'ID',
+			        visible: false
 			    }, {
 			        field: 'roleName',
 			        title: '角色名称'
@@ -44,7 +46,9 @@ adminApp.controller('roleCtrl', function($scope,$http, $uibModal, $log, allResou
 			    	}
 			    },
 			    onClickRow: function(row, $element){
-//			    	console.log('row', row);
+			    	getResourceAction(row.id);
+			    },
+			    onCheck: function(row, $element){
 			    	getResourceAction(row.id);
 			    }
             }
@@ -62,19 +66,22 @@ adminApp.controller('roleCtrl', function($scope,$http, $uibModal, $log, allResou
 			    pagination: false,
 			    pageSize: 5,
 			    pageList: [5, 10, 25, 50, 100, 200],
-			    search: true,
-			    showColumns: true,
+			    search: false,
+			    showColumns: false,
+			    showToggle: false,
 			    showRefresh: false,
 			    minimumCountColumns: 2,
 			    clickToSelect: false,
-			    showToggle: true,
 			    maintainSelected: true,
 			    columns: [{
 			        field: 'name',
 			        title: '资源名称'
 			    },{
 			        field: 'actions',
-			        title: '资源名称'
+			        title: '操作名称'
+			    },{
+			        field: 'authActions',
+			        title: '已授权操作'
 			    }]
             }
 	}
@@ -92,18 +99,22 @@ adminApp.controller('roleCtrl', function($scope,$http, $uibModal, $log, allResou
 				    pagination: false,
 				    pageSize: 5,
 				    pageList: [5, 10, 25, 50, 100, 200],
-				    search: true,
-				    showColumns: true,
+				    search: false,
+				    showColumns: false,
+				    showToggle: false,
 				    showRefresh: false,
 				    minimumCountColumns: 2,
 				    clickToSelect: false,
-				    showToggle: true,
 				    maintainSelected: true,
 //				    detailView: true,
 //				    detailFormatter:function(index, row, element) {
 //				    	return '';
 //				    },
 				    columns: [{
+				    	field:'id',
+				        title: '资源id',
+				        visible: false
+				    },{
 				        field: 'name',
 				        title: '资源名称'
 				    },{
@@ -136,15 +147,27 @@ adminApp.controller('roleCtrl', function($scope,$http, $uibModal, $log, allResou
 				        		return checkBoxList;
 				        	}
 				        	return value;
-					    } 
+					    }
 				    },{
 				        field: 'authActions',
-				        title: '已授权操作'
-				    }]
+				        title: '已授权操作',
+				        visible: false
+				    }],
+				    onClickCell: function(field, value, row, $element){
+				    	if('actions'==field){
+				    		var resourceAction = [];
+				    		$element.find('input[type=checkbox]:checked').each(function(){
+				    			resourceAction.push($(this).val());
+				    		});
+				    		row.authActions = resourceAction.join(',');
+				    	}
+				    }
 	            }
 		}
 		$scope.$apply($scope.bsTableControl2);
 	}
+	
+	
 	
   // 弹出框事件
   $scope.open = function (selectedRow) {
@@ -168,8 +191,23 @@ adminApp.controller('roleCtrl', function($scope,$http, $uibModal, $log, allResou
 	    });
   };
 
-  $scope.toggleAnimation = function () {
-    $scope.animationsEnabled = !$scope.animationsEnabled;
+  $scope.saveRoleResourceAction = function () {
+	  var roles = $('#bt1').bootstrapTable('getSelections');
+	  if(roles.length==0){
+		  alert('请选择角色，再保存');
+		  return;
+	  }
+	  var resources = $('#bt2').bootstrapTable('getData', 0);
+	  var authResourceAction = [];
+	  for(var i in resources){
+		  if(resources[i].authActions != undefined){
+			  authResourceAction.push({resourceId:resources[i].id, resourceAction:resources[i].authActions});
+		  }
+	  }
+	  
+	  var data = {roleId: roles[0].id, actions: authResourceAction};
+//	  console.log('authResourceAction', data);
+	  Recipe.addRoleResourceAction(data);
   };
   
 });
@@ -183,24 +221,22 @@ adminApp.controller('ModalInstanceCtrl', function ($http, $scope, $uibModalInsta
 	  };
 	
 	  $scope.ok = function () {
-		  console.log('ok...');
-		  console.log($scope.selectNode);
-		  
-		  var user1 = {id:3, loginName:'lisi', name:'lss'};
-		  Recipe.save({id: roleId},{user: user1});
+		  console.log('ok...', $scope.selectNode);
+		  if($scope.selectNode == undefined){
+			  alert('请选中资源后，再保存');
+			  return;
+		  }
+		  var selectedResourceIds = [];
+		  for(var i in $scope.selectNode){
+			  selectedResourceIds.push($scope.selectNode[i].id);
+		  }
+		  Recipe.addRoleResource({roleId:roleId, resourceIds:selectedResourceIds});
 		  
 //		  Recipe.get({id:'3'}, function(user){
-////			  console.log('user', user)
-////			  user.$save();
-//			  
-//			//这里等价于User.save({id:'123'},{name:'changeAnotherName'})
+//			  console.log('user', user)
+//			  user.$save();
+//			  //这里等价于User.save({id:'123'},{name:'changeAnotherName'})
 //		  });
-		  
-		  
-//		  var user = {id:'2', loginName:'lisi', name:'lss'};
-//		  var recipe = new Recipe(user);
-//		  recipe.name='jsss';
-//		  recipe.$save();
 		  $uibModalInstance.close($scope.selected.item);
 	  };
 	

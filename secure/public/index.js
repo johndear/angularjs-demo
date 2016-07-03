@@ -21,6 +21,17 @@ adminApp.config(function($httpProvider){
 });
 
 adminApp.config(function ($resourceProvider) {
+	$resourceProvider.defaults.actions = {
+//	      'create': {method: 'POST'},
+//	      'update': {method: 'PUT'},
+//	      'getAll': {method: 'GET', isArray:true},
+	      'get':    {method: 'GET'},
+	      'save':   {method: 'POST'},
+	      'query':  {method: 'GET', isArray:true},
+	      'remove': {method: 'DELETE'},
+	      'delete': {method: 'DELETE'}
+    };
+	
   $resourceProvider.defaults.actions.save = {
 		 transformRequest:function(data) {
 			 if (data === undefined) {
@@ -57,8 +68,8 @@ adminApp.config(['$routeProvider', function($routeProvider, $http) {
             templateUrl: 'RoleController/index',
             controller: 'roleCtrl',
             resolve:{
-            	allResources: ["MultiRecipeLoader", function(MultiRecipeLoader) {
-                    return MultiRecipeLoader();
+            	allResources: ["MultiResourceLoader", function(MultiResourceLoader) {
+                    return MultiResourceLoader();
                 }]
             }
         }).when('/group', {
