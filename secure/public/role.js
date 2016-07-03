@@ -20,14 +20,10 @@ adminApp.controller('roleCtrl', function($scope,$http, $uibModal, $log, Recipe, 
 			    clickToSelect: true,
 			    maintainSelected: true,
 			    singleSelect: true,
-			    selectItemName:'id',
 			    columns: [{
+			    	field:'box',
 			    	checkbox: true
 			    },{
-			        field: 'id',
-			        title: 'ID',
-			        visible: false
-			    }, {
 			        field: 'roleName',
 			        title: '角色名称'
 			    }, {
@@ -39,6 +35,10 @@ adminApp.controller('roleCtrl', function($scope,$http, $uibModal, $log, Recipe, 
 			        formatter:function(value, row, index) {
 			        	return '<a onclick="javascript:void(0);">分配资源</a>'
 			        }
+			    },{
+			        field: 'id',
+			        title: 'ID',
+			        visible: false
 			    }],
 			    onClickCell: function(field, value, row, $element){
 			    	if(field=='opt'){
@@ -111,10 +111,6 @@ adminApp.controller('roleCtrl', function($scope,$http, $uibModal, $log, Recipe, 
 //				    	return '';
 //				    },
 				    columns: [{
-				    	field:'id',
-				        title: '资源id',
-				        visible: false
-				    },{
 				        field: 'name',
 				        title: '资源名称'
 				    },{
@@ -151,6 +147,10 @@ adminApp.controller('roleCtrl', function($scope,$http, $uibModal, $log, Recipe, 
 				    },{
 				        field: 'authActions',
 				        title: '已授权操作',
+				        visible: false
+				    },{
+				    	field:'id',
+				        title: '资源id',
 				        visible: false
 				    }],
 				    onClickCell: function(field, value, row, $element){
