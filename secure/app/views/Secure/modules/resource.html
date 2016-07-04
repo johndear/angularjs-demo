@@ -11,8 +11,10 @@
 
 <!-- Main content -->
 <section class="content">
-
-	<table bs-table-control="bsTableControl"></table>
+	<div ng-controller="MainCtrl">
+    	<div id="grid1" ui-grid="gridOptions" ui-grid-tree-view class="grid"></div>
+    </div>
+	<div id="treeview-checkable"></div>
 	
 	<button>保存</button>
 </section>
@@ -20,11 +22,7 @@
 
 	<script src="public/bootstrap-treeview.js"></script>
 <script type="text/javascript">
-
-function showResource(){
 	$('#treeview-checkable').show();
-}
-
 var defaultData = [
                    {
                      text: '在线客服管理系统',
@@ -65,8 +63,14 @@ var defaultData = [
 
 var $checkableTree = $('#treeview-checkable').treeview({
     data: defaultData,
-    showIcon: false,
-    showCheckbox: true,
+    // color: "#428bca",
+    expandIcon: 'glyphicon glyphicon-chevron-right',
+    collapseIcon: 'glyphicon glyphicon-chevron-down',
+    // nodeIcon: 'glyphicon glyphicon-bookmark',
+    showIcon: true,
+    showBorder: true,
+    showCheckbox: false,
+    showTags: true,
     onNodeChecked: function(event, node) {
       $('#checkable-output').prepend('<p>' + node.text + ' was checked</p>');
     },
