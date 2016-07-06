@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+ <!-- Bootstrap 3.3.6 -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/fontawesome/css/font-awesome.css">
+<link rel="stylesheet" href="css/bootstrap-treeview.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/bootstrap-treeview.js"></script>
+</head>
+<body>
+<br>
+参考：https://github.com/jonmiles/bootstrap-treeview
+<br>
+<br>
+<br>
+	<div style="width:30%"><div id="treeview-checkable"></div></div>
+
+</body>
+<script type="text/javascript">
+	$('#treeview-checkable').show();
+	var defaultData = [ {
+		text : '在线客服管理系统',
+		href : '#parent1',
+		tags : [ '4' ],
+		nodes : [ {
+			text : 'Child 1',
+			href : '#child1',
+			tags : [ '2' ],
+			nodes : [ {
+				text : 'Grandchild 1',
+				href : '#grandchild1',
+				tags : [ '0' ]
+			}, {
+				text : 'Grandchild 2',
+				href : '#grandchild2',
+				tags : [ '0' ]
+			} ]
+		}, {
+			text : 'Child 2',
+			href : '#child2',
+			tags : [ '0' ]
+		} ]
+	}, {
+		text : 'Parent 2',
+		href : '#parent2',
+		tags : [ '0' ]
+	} ];
+
+	var $checkableTree = $('#treeview-checkable').treeview(
+			{
+				data : defaultData,
+				color: "#428bca",
+				expandIcon : 'glyphicon glyphicon-chevron-right',
+				collapseIcon : 'glyphicon glyphicon-chevron-down',
+				nodeIcon: 'glyphicon glyphicon-bookmark',
+				showIcon : true,
+				showBorder : true,
+				showCheckbox : false,
+				showTags : true,
+				onNodeChecked : function(event, node) {
+					$('#checkable-output').prepend(
+							'<p>' + node.text + ' was checked</p>');
+				},
+				onNodeUnchecked : function(event, node) {
+					$('#checkable-output').prepend(
+							'<p>' + node.text + ' was unchecked</p>');
+				}
+			});
+</script>

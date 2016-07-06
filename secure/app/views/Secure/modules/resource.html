@@ -11,72 +11,17 @@
 
 <!-- Main content -->
 <section class="content">
+
 	<div ng-controller="MainCtrl">
     	<div id="grid1" ui-grid="gridOptions" ui-grid-tree-view class="grid"></div>
     </div>
-	<div id="treeview-checkable"></div>
 	
-	<button>保存</button>
+	<!-- You can use a custom html template with the `data-template` attr -->
+	<button type="button" class="btn btn-lg btn-danger" data-template-url="views/aside.demo.tpl.html" data-placement="left" data-animation="am-slide-left" bs-aside="aside" data-container="body">Custom aside
+	  <br>
+	  <small>(using data-template)</small>
+	</button>
+
 </section>
 <!-- /.content -->
-
-	<script src="public/bootstrap-treeview.js"></script>
-<script type="text/javascript">
-	$('#treeview-checkable').show();
-var defaultData = [
-                   {
-                     text: '在线客服管理系统',
-                     href: '#parent1',
-                     tags: ['4'],
-                     nodes: [
-                       {
-                         text: 'Child 1',
-                         href: '#child1',
-                         tags: ['2'],
-                         nodes: [
-                           {
-                             text: 'Grandchild 1',
-                             href: '#grandchild1',
-                             tags: ['0']
-                           },
-                           {
-                             text: 'Grandchild 2',
-                             href: '#grandchild2',
-                             tags: ['0']
-                           }
-                         ]
-                       },
-                       {
-                         text: 'Child 2',
-                         href: '#child2',
-                         tags: ['0']
-                       }
-                     ]
-                   },
-                   {
-                     text: 'Parent 2',
-                     href: '#parent2',
-                     tags: ['0']
-                   }
-                 ];
-
-
-var $checkableTree = $('#treeview-checkable').treeview({
-    data: defaultData,
-    // color: "#428bca",
-    expandIcon: 'glyphicon glyphicon-chevron-right',
-    collapseIcon: 'glyphicon glyphicon-chevron-down',
-    // nodeIcon: 'glyphicon glyphicon-bookmark',
-    showIcon: true,
-    showBorder: true,
-    showCheckbox: false,
-    showTags: true,
-    onNodeChecked: function(event, node) {
-      $('#checkable-output').prepend('<p>' + node.text + ' was checked</p>');
-    },
-    onNodeUnchecked: function (event, node) {
-      $('#checkable-output').prepend('<p>' + node.text + ' was unchecked</p>');
-    }
-  });
-</script>
 
