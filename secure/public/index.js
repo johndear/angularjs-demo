@@ -1,6 +1,6 @@
 
 
-var adminApp = angular.module('adminApp', ['ngRoute', 'bsTable', 'ui.bootstrap','guthub.services', 'ngTouch', 'ui.grid', 'ui.grid.treeView', 'mgcrea.ngStrap']);
+var adminApp = angular.module('adminApp', ['ngRoute', 'bsTable', 'ui.bootstrap','guthub.services', 'ngTouch', 'ui.grid', 'ui.grid.treeView', 'ngAnimate', 'mgcrea.ngStrap']);
 
 // 对ajax http进行监控。添加拦截器，对request和response做前置和后置处理
 adminApp.factory('errorInterceptor',function($q,$location,$rootScope){

@@ -40,16 +40,20 @@ adminApp.controller('resourceCtrl', function($scope,$http,$aside){
             }
 	}
 	
-//	// Pre-fetch an external template populated with a custom scope
-//	  var myOtherAside = $aside({scope: $scope, template: 'views/aside.demo.tpl.html'});
-//	  // Show when some event occurs (use $promise property to ensure the template has been loaded)
-//	  myOtherAside.$promise.then(function() {
-//	    myOtherAside.show();
-//	  })
+	$scope.aside = function(){
+		var myOtherAside = $aside({title: '数据详情', content: '有', scope: $scope, template: 'views/aside.demo.tpl.html'});
+		myOtherAside.$promise.then(function() {
+			myOtherAside.show();
+		});
+	}
 	
 });
 
-adminApp.controller('MainCtrl', ['$scope', '$http', '$interval', 'uiGridTreeViewConstants', function ($scope, $http, $interval, uiGridTreeViewConstants ) {
+adminApp.controller('MainCtrl', ['$rootScope', '$scope', '$http', '$interval', 'uiGridTreeViewConstants', function ($rootScope, $scope, $http, $interval, uiGridTreeViewConstants ) {
+	$rootScope.detail = function(row){
+		console.log('row', row);
+		console.log(row.entity.id);
+	}
 	
 	$scope.gridOptions = {
 	    enableSorting: false,
@@ -66,6 +70,7 @@ adminApp.controller('MainCtrl', ['$scope', '$http', '$interval', 'uiGridTreeView
 	    onRegisterApi: function( gridApi ) {
 	      $scope.gridApi = gridApi;
 	      $scope.gridApi.treeBase.on.rowExpanded($scope, function(row) {
+	    	console.log('Expanded...ajax..');
 //	        if( row.entity.$$hashKey === $scope.gridOptions.data[50].$$hashKey && !$scope.nodeLoaded ) {
 //	          $interval(function() {
 //	            $scope.gridOptions.data.splice(51,0,
@@ -76,7 +81,8 @@ adminApp.controller('MainCtrl', ['$scope', '$http', '$interval', 'uiGridTreeView
 //	          }, 2000, 1);
 //	        }
 	      });
-	    }
+	    },
+	    rowTemplate: '<div ng-click="grid.appScope.detail(row)" ng-repeat="col in colContainer.renderedColumns track by col.colDef.name" class="ui-grid-cell" ui-grid-cell></div>'
 	  };
 	 
 	  $http.get('ResourceController')

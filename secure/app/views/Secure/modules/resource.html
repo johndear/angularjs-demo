@@ -15,12 +15,19 @@
 	<div ng-controller="MainCtrl">
     	<div id="grid1" ui-grid="gridOptions" ui-grid-tree-view class="grid"></div>
     </div>
+    
+    <!-- <button type="button" class="btn btn-lg btn-primary" bs-aside="aside">Click to toggle aside
+	  <br>
+	  <small>(using an object)</small>
+	</button> -->
 	
 	<!-- You can use a custom html template with the `data-template` attr -->
-	<button type="button" class="btn btn-lg btn-danger" data-template-url="views/aside.demo.tpl.html" data-placement="left" data-animation="am-slide-left" bs-aside="aside" data-container="body">Custom aside
+	<button type="button" class="btn btn-lg btn-danger" data-template-url="views/aside.demo.tpl.html" data-placement="right" data-animation="am-slide-left" data-container="body" ng-click="aside()">Custom aside
 	  <br>
 	  <small>(using data-template)</small>
 	</button>
+	
+	
 
 </section>
 <!-- /.content -->
