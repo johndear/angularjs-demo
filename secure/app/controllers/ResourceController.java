@@ -47,10 +47,10 @@ public class ResourceController extends Controller{
     
     public static void show(Long id)  {
     	// Fetch user from DB
-        User user = User.findById(id);
+        Resource resource = Resource.findById(id);
         
         // Show user
-        renderJSON(user);
+        renderJSON(resource);
     }
     
     

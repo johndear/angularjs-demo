@@ -1,6 +1,6 @@
 var adminApp = angular.module('adminApp');
 
-adminApp.controller('resourceCtrl', function($scope,$http,$aside){
+adminApp.controller('resourceCtrl', function($scope,$http,$aside,Resource){
 
 	$scope.bsTableControl = {
             options: {
@@ -40,19 +40,64 @@ adminApp.controller('resourceCtrl', function($scope,$http,$aside){
             }
 	}
 	
-	$scope.aside = function(){
-		var myOtherAside = $aside({title: '数据详情', content: '有', scope: $scope, template: 'views/aside.demo.tpl.html'});
+	// 弹出aside框
+	$scope.aside = function(singleResource){
+		var actionList = [];
+		if(singleResource.actions){
+			var actions = singleResource.actions.split(',');
+			for(var i in actions){
+				var action = actions[i];
+				if(action!=''){
+					actionList.push({code: action.split(':')[0], name: action.split(':')[1]});
+				}
+			}
+		}
+		
+		$scope.resource = singleResource;
+		$scope.resource.actionList = actionList;
+		
+		var myOtherAside = $aside({title: '详情页', content: '<b>基本信息</b>', scope: $scope, template: 'views/aside.demo.tpl.html'});
 		myOtherAside.$promise.then(function() {
 			myOtherAside.show();
 		});
 	}
 	
-});
-
-adminApp.controller('MainCtrl', ['$rootScope', '$scope', '$http', '$interval', 'uiGridTreeViewConstants', function ($rootScope, $scope, $http, $interval, uiGridTreeViewConstants ) {
-	$rootScope.detail = function(row){
+	$scope.addRow = function(){
+		var actionList = $scope.resource.actionList;
+		actionList.push({code: '', name: '', editable: true});
+		$scope.resource.actionList = actionList;
+	}
+	
+	$scope.save = function(){
+		var actionList = $scope.resource.actionList;
+		for (var i=0;i<actionList.length;i++){
+			for (var j= i+1;j<actionList.length;j++){
+				if(actionList[i].code==actionList[j].code || actionList[i].name==actionList[j].name){
+					alert('已经存在该键/值: ' + actionList[i].code + '==' + actionList[i].name);
+					return;
+				}
+			}
+		}
+		
+		for (var i=0;i<actionList.length;i++){
+			if(actionList[i].code=='' || actionList[i].name==''){
+				alert('键/值不能为空: ' + actionList[i].code + '==' + actionList[i].name);
+				return;
+			}
+		}
+		
+		console.log('actionList', actionList);
+	}
+	
+	// =============== ui-grid =======================
+	$scope.detail = function(row){
 		console.log('row', row);
 		console.log(row.entity.id);
+		Resource.get({id: row.entity.id}, function(result){
+			console.log('resource', result);
+			// 弹出aside框
+			$scope.aside(result);
+		});
 	}
 	
 	$scope.gridOptions = {
@@ -114,5 +159,5 @@ adminApp.controller('MainCtrl', ['$rootScope', '$scope', '$http', '$interval', '
 	    $scope.gridOptions.showTreeExpandNoChildren = !$scope.gridOptions.showTreeExpandNoChildren;
 	    $scope.gridApi.grid.refresh();
 	  };
-	}]);
+	});
 
