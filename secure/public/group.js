@@ -1,10 +1,11 @@
 var adminApp = angular.module('adminApp');
 
-adminApp.controller('groupCtrl', ['$scope', '$http', function($scope,$http){
+adminApp.controller('groupCtrl', function($scope,$http, $aside, allGroups){
 
 	$scope.bsTableControl = {
             options: {
-            	url:'GroupController/queryAll',
+            	url:'UserController/queryAll',
+                //data: allGroups,
 				rowStyle: function (row, index) {
 			        return { classes: 'none' };
 			    },
@@ -26,8 +27,8 @@ adminApp.controller('groupCtrl', ['$scope', '$http', function($scope,$http){
 			        field: 'id',
 			        title: 'ID'
 			    }, {
-			        field: 'groupName',
-			        title: '组名称'
+			        field: 'userName',
+			        title: '用户名'
 			    }, {
 			        field: 'price',
 			        title: '备注'
@@ -40,6 +41,10 @@ adminApp.controller('groupCtrl', ['$scope', '$http', function($scope,$http){
 			    }
             }
 	}
+
+	$scope.allGroups = [{id:1,name:'班长',pId:0},
+	                    {id:2,name:'组长',pId:1},
+	                    {id:2,name:'普通会员',pId:1}];
 	
-}]);
+});
 

@@ -74,7 +74,12 @@ adminApp.config(['$routeProvider', function($routeProvider, $http) {
             }
         }).when('/group', {
             templateUrl: 'GroupController/index',
-            controller: 'groupCtrl'
+            controller: 'groupCtrl',
+            resolve:{
+            	allGroups: ["MultiGroupLoader", function(MultiGroupLoader) {
+                    return MultiGroupLoader();
+                }]
+            }
         }).when('/user', {
             templateUrl: 'UserController/index',
             controller: 'userCtrl'

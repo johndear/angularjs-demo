@@ -56,7 +56,7 @@ adminApp.controller('resourceCtrl', function($scope,$http,$aside,Resource){
 		$scope.resource = singleResource;
 		$scope.resource.actionList = actionList;
 		
-		var myOtherAside = $aside({title: '详情页', content: '<b>基本信息</b>', scope: $scope, template: 'views/aside.demo.tpl.html'});
+		var myOtherAside = $aside({title: '详情页', content: '<b>基本信息</b>', scope: $scope, template: 'views/resource.tpl.html'});
 		myOtherAside.$promise.then(function() {
 			myOtherAside.show();
 		});

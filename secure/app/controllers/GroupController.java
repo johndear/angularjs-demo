@@ -15,7 +15,7 @@ public class GroupController extends Controller{
 		renderTemplate("Secure/modules/group.html");
 	}
 	
-	public static void queryAll(){
+	public static void query(){
 		List<Group> list = Group.findAll();
 		renderJSON(list);
 	}

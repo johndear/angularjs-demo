@@ -1,6 +1,6 @@
 var adminApp = angular.module('adminApp');
 
-adminApp.controller('userCtrl', ['$scope', '$http', function($scope,$http){
+adminApp.controller('userCtrl', function($scope,$http,$aside){
 
 	$scope.bsTableControl = {
             options: {
@@ -33,10 +33,20 @@ adminApp.controller('userCtrl', ['$scope', '$http', function($scope,$http){
 			    }],
 			    onClickRow: function(row, $element){
 			    	console.log('row', row);
+			    	$scope.aside();
 			    }
             }
 	}
 	
+	// 弹出aside框
+	$scope.aside = function(singleResource){
+		
+		var myOtherAside = $aside({title: '详情页', content: '<b>基本信息</b>', scope: $scope, template: 'views/user.tpl.html'});
+		myOtherAside.$promise.then(function() {
+			myOtherAside.show();
+		});
+	}
 	
-}]);
+	
+});
 

@@ -16,7 +16,7 @@
 				<div id="toolbar">
 					
 					<div class="form-inline" role="form">
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<div class="form-group">
 								<label class="control-label"><i class="fa fa-calendar"></i>
 									关键词</label>
@@ -46,9 +46,9 @@
 						<div class="form-group">
 							<button type="submit" class="btn btn-default pull-left" ng-click="query(true)">查询
 							</button>
-						</div>
+						</div> -->
 						<button type="button" class="btn btn-default"
-							ng-click="addKeyword($event)" title="新增">
+							ng-click="test($event)" title="新增">
 							<i class="glyphicon glyphicon-plus"></i>
 						</button>
 						<!-- 这里删除按钮的name必须要设置，并且等于路由里面配置的action名 -->
@@ -77,16 +77,23 @@
 								</progressbar>
 							</section>
 						</div>
-						
 					</div>
 				</div>
 				
-				<table bs-table-control="bsTableControl" data-toolbar="#toolbar"></table>
+				
+				<div style="width:30%;float:left;border:1px solid #ccc;height:450px;">
+					<button class="btn">添加组</button>
+					<button class="btn">编辑组</button>
+					<button class="btn">删除组</button>
+					<button class="btn">授权角色</button>
+					<ul tree class="ztree" ng-model="selectNode" node-data="allGroups"></ul>
+				</div>
+				<div style="width:69%;float:right;">
+					<table bs-table-control="bsTableControl" data-toolbar="#toolbar"></table>
+				</div>
 				
 		</div>
-				
-	
-	<button>保存</button>
+		
 </section>
 <!-- /.content -->
 

@@ -215,6 +215,7 @@ adminApp.controller('roleCtrl', function($scope,$http, $uibModal, $log, Recipe, 
 // 弹出框页面controller
 adminApp.controller('ModalInstanceCtrl', function ($http, $scope, $uibModalInstance, roleId, resourceList, Recipe) {
 	
+	  console.log('resourceList', resourceList);
 	  $scope.resources = resourceList;
 	  $scope.selected = {
 	    item: $scope.resources[0]
