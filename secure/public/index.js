@@ -12,6 +12,7 @@ adminApp.factory('errorInterceptor',function($q,$location,$rootScope){
 //				alert('access dead!');
 //				$location.path('/accessDenied');
 			}
+			
 		    return $q.reject(rejection);
 		}
 	};
